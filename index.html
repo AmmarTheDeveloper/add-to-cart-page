@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="custom.css" />
+    <title>Cart page design</title>
+  </head>
+  <body>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table
+        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+      >
+        <thead
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th scope="col" class="px-16 py-3">Image</th>
+            <th scope="col" class="px-6 py-3">Name</th>
+            <th scope="col" class="px-6 py-3">Qty</th>
+            <th scope="col" class="px-6 py-3">Price</th>
+            <th scope="col" class="px-6 py-3">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+          >
+            <td class="p-4">
+              <img
+                src="https://flowbite.com/docs/images/products/iphone-12.png"
+                class="w-16 md:w-32 max-w-full max-h-full"
+                alt="Apple Watch"
+              />
+            </td>
+            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+              Apple Watch
+            </td>
+            <td class="px-6 py-4">
+              <form class="flex items-center">
+                <button
+                  class="minus-btn inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                  type="button"
+                >
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <div>
+                  <input
+                    type="number"
+                    class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    value="0"
+                  />
+                </div>
+                <button
+                  class="plus-btn inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                  type="button"
+                >
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+                <button
+                  type="submit"
+                  class="bg-blue-500 text-white h-[40px] px-[15px] ml-3 rounded pointer transition hover:bg-blue-600"
+                >
+                  Update
+                </button>
+              </form>
+            </td>
+            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+              $599
+            </td>
+            <td class="px-6 py-4">
+              <a
+                href="#"
+                class="bg-red-500 inline-flex items-center text-white h-[40px] px-[15px] ml-3 rounded pointer transition hover:bg-red-600"
+                >Remove</a
+              >
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <td class="p-5" colspan="5">
+              <div class="flex justify-center gap-[20px] text-[25px]">
+                <span class="font-[600]">Total:</span>
+                <span class="font-[600]">₹1000</span>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <script>
+      const btns = document.querySelectorAll(".plus-btn , .minus-btn");
+
+      btns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          updateInput(this);
+        });
+      });
+
+      function updateInput(btn) {
+        let target = btn;
+        let input = target.parentElement.querySelector("input");
+        let operation = target.classList.contains("plus-btn")
+          ? "increment"
+          : "decrement";
+        let { value } = input;
+        if (operation == "increment") {
+          input.value = ++value;
+        } else {
+          input.value = --value;
+        }
+      }
+    </script>
+  </body>
+</html>
